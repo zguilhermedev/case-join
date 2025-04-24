@@ -102,9 +102,9 @@ export default function LoginPage() {
                 
                 <p className={styles.loginFooter}>
                     Não tem uma conta?{' '}
-                    <a href="/register" className={styles.loginLink}>
+                    <Link href="/register" className={styles.loginLink}>
                         Cadastre-se
-                    </a>
+                    </Link>
                 </p>
             </div>
         </div>
