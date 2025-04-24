@@ -1,0 +1,63 @@
+.notificationContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.notification {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 300px;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.notificationContent {
+  display: flex;
+  padding: 15px;
+  gap: 12px;
+  align-items: center;
+}
+
+.notificationIcon {
+  font-size: 20px;
+  color: #6366f1;
+}
+
+.notificationMessage {
+  flex: 1;
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.notificationProgress {
+  height: 4px;
+  background: linear-gradient(to right, #6366f1, #8b5cf6);
+  animation: progress 5s linear forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}

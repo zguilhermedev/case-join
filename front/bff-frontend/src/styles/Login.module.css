@@ -1,0 +1,127 @@
+.loginContainer {
+    min-height: 100vh;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+  }
+  
+  .loginCard {
+    width: 100%;
+    max-width: 350px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+  
+  .loginTitle {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #111827;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .loginLabel {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+  }
+  
+  .loginInput {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    width: 100%;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  .loginInput:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    outline: none;
+  }
+  
+  .loginButton {
+    padding: 0.75rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    margin-top: 0.5rem;
+  }
+  
+  .loginButton:hover {
+    background-color: #2563eb;
+  }
+  
+  .loginError {
+    color: #dc2626;
+    font-size: 0.875rem;
+    text-align: center;
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .loginFooter {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    text-align: center;
+    color: #6b7280;
+  }
+  
+  .loginLink {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .loginLink:hover {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.loginInput:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+.loginButton:focus-visible {
+    outline: 2px solid #1d4ed8;
+    outline-offset: 2px;
+}
+
+.container {
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+.button {
+    background-color: var(--primary);
+}
+
+
+.loginSuccess {
+  color: #16a34a;
+  font-size: 0.875rem;
+  text-align: center;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+}
