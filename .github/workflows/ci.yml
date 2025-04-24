@@ -43,6 +43,9 @@ jobs:
   docker-push:
     needs: [build-backends, build-frontend]
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [ 'order-service', 'bff', 'category-service', 'product-service', 'auth' ]
     steps:
       - uses: actions/checkout@v4
       - name: Log in to GHCR
@@ -53,6 +56,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Docker Images
         run: |
-          export TAG=ghcr.io/${{ github.repository_owner }}/order-service:latest
-          docker build -t $TAG ./order-service
+          export TAG=ghcr.io/${{ github.repository_owner }}/${{ matrix.service }}:latest
+          docker build -t $TAG ./${{ matrix.service }}
           docker push $TAG
