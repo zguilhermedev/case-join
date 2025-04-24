@@ -19,6 +19,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Grant execute permission to mvnw
+        run: chmod +x ./${{ matrix.service }}/mvnw
       - name: Run tests ${{ matrix.service }}
         run: |
           cd ${{ matrix.service }}
@@ -34,7 +36,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build Frontend
         run: |
-          cd front
+          cd front/bff-frontend
           npm install
           npm run build
 
@@ -54,4 +56,3 @@ jobs:
           export TAG=ghcr.io/${{ github.repository_owner }}/order-service:latest
           docker build -t $TAG ./order-service
           docker push $TAG
-          # Repita para outros serviços e frontend
