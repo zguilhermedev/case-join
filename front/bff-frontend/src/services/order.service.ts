@@ -28,9 +28,10 @@ export const orderService = {
 
       return await api.post(BASE_URL, backendFormat);
     } catch (error: unknown) {
+      console.error(error)
       const apiError: ApiError = {
         message: 'Erro ao criar pedido'
-      };  
+      };
       throw apiError;
     }
   },

@@ -1,4 +1,3 @@
-import { useAuth } from '@/contexts/AuthContext';
 
 class ApiService {
   private baseUrl: string;

@@ -13,15 +13,6 @@ export default function OrdersPage() {
   const router = useRouter();
   const { isAuthenticated, user } = useAuth();
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      router.push('/login');
-      return;
-    }
-
-    fetchOrders();
-  }, [isAuthenticated, router]);
-
   const fetchOrders = async (userId?: string) => {
     try {
       const filterUser = user?.role == 'ADMIN' ? userId : user?.id + '';
@@ -41,6 +32,15 @@ export default function OrdersPage() {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      router.push('/login');
+      return;
+    }
+
+    fetchOrders();
+  }, [isAuthenticated, router]);
 
   const handleDelete = async (id: number) => {
     if (!confirm('Tem certeza que deseja excluir este pedido?')) return;
