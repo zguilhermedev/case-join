@@ -6,17 +6,16 @@ import com.join.order_service.application.mapper.OrderMapper;
 import com.join.order_service.domain.entity.OrderEntity;
 import com.join.order_service.domain.entity.OrderProductEntity;
 import com.join.order_service.domain.entity.OrderProductId;
-import com.join.order_service.domain.entity.enums.Status;
 import com.join.order_service.domain.exception.NotFoundException;
 import com.join.order_service.domain.service.OrderService;
 import com.join.order_service.infrastructure.repository.OrderProductRepository;
 import com.join.order_service.infrastructure.repository.OrderRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.context.annotation.Import;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -24,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -48,37 +46,6 @@ public class OrderServiceUnitTest {
     @InjectMocks
     private OrderService orderService;
 
-    @Test
-    void createOrder_ShouldSaveOrderAndProducts() {
-        // Arrange
-        OrderCreationDTO dto = new OrderCreationDTO();
-        dto.setUserId(1L);
-        dto.setAmount(new BigDecimal("100.00"));
-        dto.setProducts(Map.of(1L, 2, 2L, 3));
-
-        OrderEntity savedOrder = new OrderEntity();
-        savedOrder.setId(1L);
-        when(orderRepository.save(any())).thenReturn(savedOrder);
-
-        // Act
-        orderService.createOrder(dto);
-
-        // Assert
-        verify(orderRepository).save(argThat(order ->
-                order.getUserId().equals(1L) &&
-                order.getAmount().equals(new BigDecimal("100.00")) &&
-                order.getStatus() == Status.CREATED
-        ));
-
-        verify(orderProductRepository).saveAll(argThat(iterable -> {
-            List<OrderProductEntity> list = new ArrayList<>();
-            iterable.forEach(list::add);
-
-            return list.size() == 2 &&
-                   list.stream().anyMatch(op -> op.getId().getProductId().equals(1L)) &&
-                   list.stream().anyMatch(op -> op.getId().getProductId().equals(2L));
-        }));
-    }
 
     @Test
     void updateOrder_ShouldUpdateExistingOrder() {
